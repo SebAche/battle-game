@@ -16,6 +16,7 @@ class PlayAGamePresenter implements PlayAGamePresenterInterface
         // var_dump($response); 
         $this->viewModel = new PlayAGameViewModel(
             $response->introGame,
+            $response->exAequo,
             $response->winnerName,
             $response->namePlayerOne,
             $response->namePlayerTwo,

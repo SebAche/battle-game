@@ -37,11 +37,16 @@ class PlayAGameUseCase implements PlayAGameUseCaseInterface
         $response->introGame = $game->getIntroGame();
         $response->namePlayerOne = $request->getPlayerOneName();
         $response->namePlayerTwo = $request->getPlayerTwoName();
-        $response->winnerName = $game->getTheWinner()->getName();
-        $response->winnerScore = $game->getTheWinner()->getTheCummulatedPoints();
-        $response->looserScore = $game->getTheLooser()->getTheCummulatedPoints();
         $response->histo = $game->getHisto();
         $response->errors = $this->errors;
+
+        if (null != $game->getTheWinner()) {
+            $response->exAequo = false;
+            $response->winnerName = $game->getTheWinner()->getName();
+            $response->winnerScore = $game->getTheWinner()->getTheCummulatedPoints();
+            $response->looserScore = $game->getTheLooser()->getTheCummulatedPoints();
+        }
+
 
         $output->present($response);
     }

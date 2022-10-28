@@ -10,6 +10,7 @@ class PlayAGameResponse
         public string $introGame = '',
         public string $namePlayerOne = '',
         public string $namePlayerTwo = '',
+        public bool $exAequo = true,
         public string $winnerName = '',
         public int $winnerScore = 0,
         public int $looserScore = 0,

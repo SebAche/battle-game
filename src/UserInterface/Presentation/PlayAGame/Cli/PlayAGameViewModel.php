@@ -9,6 +9,7 @@ class PlayAGameViewModel
 
     public function __construct(
         public string $introGame = '',
+        public bool $exAequo = true,
         public string $winnerName = '',
         public string $namePlayerOne = '',
         public string $namePlayerTwo = '',

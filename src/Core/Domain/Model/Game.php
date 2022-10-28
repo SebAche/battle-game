@@ -22,10 +22,10 @@ class Game
     
     public function getIntroGame()
     {
-        return sprintf("This game is a %d card battle opposing %s and %s", 
-            $this->initDeck->getInitNumberOfCards(),
-            $this->playerOne->getName(),
-            $this->playerTwo->getName()
+        return sprintf("Card battles opposing %s vs %s (%d cards set)", 
+        $this->playerOne->getName(),
+        $this->playerTwo->getName(),
+        $this->initDeck->getInitNumberOfCards(),
         );
     }
 
@@ -64,13 +64,19 @@ class Game
         }
     }
 
-    public function getTheWinner(): Player
+    public function getTheWinner(): ?Player
     {
+        if ($this->playerOne->getTheCummulatedPoints() == $this->playerTwo->getTheCummulatedPoints()) {
+            return null;
+        }
         return $this->playerOne->getTheCummulatedPoints() > $this->playerTwo->getTheCummulatedPoints() ? $this->playerOne : $this->playerTwo;
     }
 
-    public function getTheLooser(): Player
+    public function getTheLooser(): ?Player
     {
+        if ($this->playerOne->getTheCummulatedPoints() == $this->playerTwo->getTheCummulatedPoints()) {
+            return null;
+        }
         return $this->playerOne->getTheCummulatedPoints() < $this->playerTwo->getTheCummulatedPoints() ? $this->playerOne : $this->playerTwo;
     }
 
