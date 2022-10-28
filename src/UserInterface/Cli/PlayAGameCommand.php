@@ -13,18 +13,25 @@ class PlayAGameCommand
 {
     public function execute(): int
     {
+
+        $newGame = true;
+
+        echo "Hello and welcome to this simplified battle game!" . PHP_EOL;
+
+        while ($newGame) {
+
          // Form to init a game
-        echo "Hello! What is the name of the first player:\n";
+        echo "What is the name of the first player:" . PHP_EOL;
         $playerOneName = fread(STDIN, 80);
 
-        echo "and the name of his opponent:\n";
+        echo "and the name of his opponent:" . PHP_EOL;
         $playerTwoName = fread(STDIN, 80);
 
-        echo "How many cards do you want to send to battle? [52]\n";
+        echo "How many cards do you want to send to battle? [52]" . PHP_EOL;
         $inputNumber = fread(STDIN, 5);
         $numberOfCards = empty(trim($inputNumber)) ? 52 : (int)$inputNumber;
 
-        echo "Do you want to see the battles of this game? (Y/N) [N]\n";
+        echo "Do you want to see the battles of this game? (Y/N) [N]" . PHP_EOL;
         $displayBattle = fread(STDIN, 1);
         $displayBattle = empty(trim($displayBattle)) ? false : (strtoupper($displayBattle) === 'Y');
 
@@ -39,6 +46,15 @@ class PlayAGameCommand
         // Render
         $view = New PlayAGameView();
         $view->generateView($presenter);
+
+
+        echo PHP_EOL . " => Do you want to play a new game? (Y/N) [N]" . PHP_EOL;
+        $choiceNewGame = trim(fread(STDIN, 2));
+        $newGame = empty($choiceNewGame) ? false : (strtoupper($choiceNewGame) === 'Y');
+
+        }
+
+        echo "Thanks for playing! See you later!" . PHP_EOL;
 
         return 0;
     }
