@@ -10,12 +10,10 @@ use App\Core\Domain\Model\Deck;
 
 class PlayAGameUseCase implements PlayAGameUseCaseInterface
 {
-
     private $errors = [];
 
     public function execute(PlayAGameRequest $request, PlayAGamePresenterInterface $output): void
     {
-
         $response = new PlayAGameResponse();
         $this->validateName($request);
         $this->validateNumberOfCards($request);
@@ -29,7 +27,7 @@ class PlayAGameUseCase implements PlayAGameUseCaseInterface
             new Player($request->getPlayerOneName()),
             new Player($request->getPlayerTwoName()),
             (new Deck())->init($request->getNumberOfCards())
-            );
+        );
 
         $game->CardsDistributions();
         $game->battle($request->isBattleDisplayed());

@@ -15,13 +15,9 @@ class Battle
     public int $winnerCummulatedPoints;
 
     public function __construct(
-       public int $numberRound,
-    //     public Card $cardPlayerOne,
-    //     public Card $cardPlayerTwo,
-    //     public Player $winner,
-    //     public int $winnerCummulatedPoints
-    )
-    {}
+        public int $numberRound,
+    ) {
+    }
 
     public function attaque(Player $playerOne, Player $playerTwo)
     {

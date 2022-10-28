@@ -12,8 +12,7 @@ class Player
         private string $name,
         private Deck $deck = new Deck(),
         private int $cummulatedPoints = 0,
-    )
-    {
+    ) {
         $this->name = $this->formatName($name);
     }
 

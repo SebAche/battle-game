@@ -6,7 +6,6 @@ namespace App\UserInterface\Presentation\PlayAGame\Cli;
 
 class PlayAGameViewModel
 {
-
     public function __construct(
         public string $introGame = '',
         public bool $exAequo = true,

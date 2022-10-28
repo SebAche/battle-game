@@ -8,8 +8,8 @@ class Card
 {
     public function __construct(
         private int $value,
-    )
-    {}
+    ) {
+    }
 
     public function getValue(): ?int
     {

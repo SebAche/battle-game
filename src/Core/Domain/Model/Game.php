@@ -14,18 +14,18 @@ class Game
         private Player $playerOne,
         private Player $playerTwo,
         private Deck $initDeck,
-    )
-    {
+    ) {
         // $initDeck = new Deck();
         // $initDeck->mixTheCards();
     }
-    
+
     public function getIntroGame()
     {
-        return sprintf("Card battles opposing %s vs %s (%d cards set)", 
-        $this->playerOne->getName(),
-        $this->playerTwo->getName(),
-        $this->initDeck->getInitNumberOfCards(),
+        return sprintf(
+            "Card battles opposing %s vs %s (%d cards set)",
+            $this->playerOne->getName(),
+            $this->playerTwo->getName(),
+            $this->initDeck->getInitNumberOfCards(),
         );
     }
 
@@ -39,7 +39,7 @@ class Game
             if ($i%2 === 0) {
                 $this->playerOne->receiveACard($card);
                 continue;
-            } 
+            }
 
             $this->playerTwo->receiveACard($card);
         }

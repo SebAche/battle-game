@@ -13,7 +13,6 @@ class PlayAGamePresenter implements PlayAGamePresenterInterface
 
     public function present(PlayAGameResponse $response): void
     {
-        // var_dump($response); 
         $this->viewModel = new PlayAGameViewModel(
             $response->introGame,
             $response->exAequo,
@@ -29,7 +28,6 @@ class PlayAGamePresenter implements PlayAGamePresenterInterface
 
     public function getViewModel(): PlayAGameViewModel
     {
-        // var_dump($this->viewModel);die;
         return $this->viewModel;
     }
 }
