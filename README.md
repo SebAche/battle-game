@@ -46,10 +46,9 @@ In your CLI at the root of the project :
 ### Possible problems at startup
 
 - This project was build based on php 8.1
-- The shebang '#!/usr/bin/php -q' on the `index.php` file doesn't match your configuration
+- The shebang `#!/usr/bin/php -q` on the `index.php` file doesn't match your configuration
 - STDIN is not already defined by PHP, see the commented lines in the `index.php` file
 - It could be necessary to change the rights on the entrypoint file :
 ```sh
-// It is necessary to change the rights on the entrypoint file :
 chmod 755 public/index.php
 ```
