@@ -36,15 +36,15 @@ class PlayAGameCommand
         $displayBattle = empty(trim($displayBattle)) ? false : (strtoupper($displayBattle) === 'Y');
 
         // Prepare to plug on the domaine
-        $request = New PlayAGameRequest($playerOneName, $playerTwoName, $numberOfCards, $displayBattle);
-        $presenter = New PlayAGamePresenter();
+        $request = new PlayAGameRequest($playerOneName, $playerTwoName, $numberOfCards, $displayBattle);
+        $presenter = new PlayAGamePresenter();
 
         // UseCase
-        $playAGame = New PlayAGameUseCase();
+        $playAGame = new PlayAGameUseCase();
         $playAGame->execute($request, $presenter);
 
         // Render
-        $view = New PlayAGameView();
+        $view = new PlayAGameView();
         $view->generateView($presenter);
 
 

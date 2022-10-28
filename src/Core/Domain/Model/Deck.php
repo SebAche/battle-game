@@ -22,7 +22,7 @@ class Deck
         $this->initNumberOfCards =$numberOfCards;
         
         for ($i=0; $i < $this->initNumberOfCards; $i++) { 
-            $card = New Card($i+1);
+            $card = new Card($i+1);
             $this->addACard($card);
         }
         return $this;

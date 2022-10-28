@@ -13,8 +13,7 @@ class PlayAGameRequest
         private string $namePlayerTwo,
         private int $numberOfCards,
         private bool $battleDisplayed = false,
-    )
-    {}
+    ){}
 
     public function getPlayerOneName(): string
     {
@@ -40,5 +39,4 @@ class PlayAGameRequest
     {
         return trim($name);
     }
-
 }

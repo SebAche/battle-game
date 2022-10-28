@@ -16,7 +16,7 @@ class PlayAGameUseCase implements PlayAGameUseCaseInterface
     public function execute(PlayAGameRequest $request, PlayAGamePresenterInterface $output): void
     {
 
-        $response = New PlayAGameResponse();
+        $response = new PlayAGameResponse();
         $this->validateName($request);
         $this->validateNumberOfCards($request);
 
@@ -25,10 +25,10 @@ class PlayAGameUseCase implements PlayAGameUseCaseInterface
             $output->present($response);
         }
 
-        $game = New Game(
-            New Player($request->getPlayerOneName()),
-            New Player($request->getPlayerTwoName()),
-            (New Deck())->init($request->getNumberOfCards())
+        $game = new Game(
+            new Player($request->getPlayerOneName()),
+            new Player($request->getPlayerTwoName()),
+            (new Deck())->init($request->getNumberOfCards())
             );
 
         $game->CardsDistributions();

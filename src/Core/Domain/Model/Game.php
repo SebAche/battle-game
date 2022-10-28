@@ -16,7 +16,7 @@ class Game
         private Deck $initDeck,
     )
     {
-        // $initDeck = New Deck();
+        // $initDeck = new Deck();
         // $initDeck->mixTheCards();
     }
     
@@ -55,7 +55,7 @@ class Game
         $maxRound = $this->initDeck->getInitNumberOfCards()/2;
         $round = 1;
         while ($maxRound >= $round) {
-            $battle = New Battle($round);
+            $battle = new Battle($round);
             $battle->attaque($this->playerOne, $this->playerTwo);
             if ($battleDiplayed) {
                 $this->histo[] = $battle;

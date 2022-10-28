@@ -12,5 +12,5 @@ if(!defined("STDIN")) {
 define("STDIN", fopen('php://stdin','r'));
 }*/
 
-$script = New PlayAGameCommand();
+$script = new PlayAGameCommand();
 $script->execute();

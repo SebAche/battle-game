@@ -10,7 +10,7 @@ class Player
 {
     public function __construct(
         private string $name,
-        private Deck $deck = New Deck(),
+        private Deck $deck = new Deck(),
         private int $cummulatedPoints = 0,
     )
     {

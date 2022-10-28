@@ -16,6 +16,5 @@ class PlayAGameResponse
         public int $looserScore = 0,
         public array $histo = [],
         public array $errors = []
-    )
-    {}
+    ){}
 }
