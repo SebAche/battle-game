@@ -66,7 +66,7 @@ class Game
 
     public function getTheWinner(): ?Player
     {
-        if ($this->playerOne->getTheCummulatedPoints() == $this->playerTwo->getTheCummulatedPoints()) {
+        if ($this->playerOne->getTheCummulatedPoints() === $this->playerTwo->getTheCummulatedPoints()) {
             return null;
         }
         return $this->playerOne->getTheCummulatedPoints() > $this->playerTwo->getTheCummulatedPoints() ? $this->playerOne : $this->playerTwo;
@@ -74,7 +74,7 @@ class Game
 
     public function getTheLooser(): ?Player
     {
-        if ($this->playerOne->getTheCummulatedPoints() == $this->playerTwo->getTheCummulatedPoints()) {
+        if ($this->playerOne->getTheCummulatedPoints() === $this->playerTwo->getTheCummulatedPoints()) {
             return null;
         }
         return $this->playerOne->getTheCummulatedPoints() < $this->playerTwo->getTheCummulatedPoints() ? $this->playerOne : $this->playerTwo;
