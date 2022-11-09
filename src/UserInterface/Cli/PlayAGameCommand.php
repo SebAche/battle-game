@@ -46,9 +46,9 @@ class PlayAGameCommand
             $view->generateView($presenter);
 
 
-            echo PHP_EOL . " => Do you want to play a new game? (Y/N) [N]" . PHP_EOL;
+            echo PHP_EOL . " => Do you want to play a new game? (Y/N) [Y]" . PHP_EOL;
             $choiceNewGame = trim(fread(STDIN, 2));
-            $newGame = empty($choiceNewGame) ? false : (strtoupper($choiceNewGame) === 'Y');
+            $newGame = empty($choiceNewGame) ? true : (strtoupper($choiceNewGame) === 'Y');
         }
 
         echo "Thanks for playing! See you later!" . PHP_EOL;
