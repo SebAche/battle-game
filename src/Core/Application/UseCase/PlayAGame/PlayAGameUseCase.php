@@ -17,41 +17,38 @@ class PlayAGameUseCase implements PlayAGameUseCaseInterface
         $response = new PlayAGameResponse();
         $this->validateName($request);
         $this->validateNumberOfCards($request);
-
         if (0 != count($this->errors)) {
             $response->errors = $this->errors;
-            $output->present($response);
+        } else {
+            $game = new Game(
+                new Player($request->getPlayerOneName()),
+                new Player($request->getPlayerTwoName()),
+                (new Deck())->init($request->getNumberOfCards())
+            );
+
+            $game->CardsDistributions();
+            $game->battle($request->isBattleDisplayed());
+
+            $response->introGame = $game->getIntroGame();
+            $response->namePlayerOne = $request->getPlayerOneName();
+            $response->namePlayerTwo = $request->getPlayerTwoName();
+            $response->histo = $game->getHisto();
+            $response->errors = $this->errors;
+
+            if ($game->getTheWinner() instanceof Player) {
+                $response->exAequo = false;
+                $response->winnerName = $game->getTheWinner()->getName();
+                $response->winnerScore = $game->getTheWinner()->getTheCummulatedPoints();
+                $response->looserScore = $game->getTheLooser()->getTheCummulatedPoints();
+            }
         }
-
-        $game = new Game(
-            new Player($request->getPlayerOneName()),
-            new Player($request->getPlayerTwoName()),
-            (new Deck())->init($request->getNumberOfCards())
-        );
-
-        $game->CardsDistributions();
-        $game->battle($request->isBattleDisplayed());
-
-        $response->introGame = $game->getIntroGame();
-        $response->namePlayerOne = $request->getPlayerOneName();
-        $response->namePlayerTwo = $request->getPlayerTwoName();
-        $response->histo = $game->getHisto();
-        $response->errors = $this->errors;
-
-        if (null != $game->getTheWinner()) {
-            $response->exAequo = false;
-            $response->winnerName = $game->getTheWinner()->getName();
-            $response->winnerScore = $game->getTheWinner()->getTheCummulatedPoints();
-            $response->looserScore = $game->getTheLooser()->getTheCummulatedPoints();
-        }
-
 
         $output->present($response);
     }
 
     private function validateName(PlayAGameRequest $request): void
     {
-        if (empty($request->getPlayerOneName()) | empty($request->getPlayerOneName())) {
+        if (empty($request->getPlayerOneName()) || empty($request->getPlayerTwoName())) {
             $this->errors[] = 'A player name cannot be empty.';
         }
 
