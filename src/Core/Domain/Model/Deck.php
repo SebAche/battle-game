@@ -4,14 +4,22 @@ declare(strict_types=1);
 
 namespace App\Core\Domain\Model;
 
+use LogicException;
+
 class Deck
 {
+    /**
+     * @param array<Card> $cards
+     */
     public function __construct(
         private array $cards = [],
         private int $initNumberOfCards = 0,
     ) {
     }
 
+    /**
+     * @return array<Card>
+     */
     public function getCards(): array
     {
         return $this->cards;
@@ -38,36 +46,19 @@ class Deck
         $this->cards[] = $card;
     }
 
-    public function drawACardAtRandom(): ?Card
+
+    /**
+     * @throw LogicException
+     */
+    public function drawTheTopCard(): Card
     {
-        if (empty($this->cards)) {
-            return null;
+        if (!empty($this->cards)) {
+            return array_pop($this->cards);
         }
-        $randomId = array_rand($this->cards, 1);
-        return $this->removeACardFromTheDeck($this->cards[$randomId]);
+        throw new LogicException("Cannot draw a card on an empty deck", 1);
     }
 
-    public function drawTheTopCard(): ?Card
-    {
-        if (empty($this->cards)) {
-            return null;
-        }
-        return  $this->removeACardFromTheDeck(end($this->cards));
-    }
-
-    protected function removeACardFromTheDeck(Card $card): ?Card
-    {
-        $key = array_search($card, $this->cards, true);
-        if (false === $key) {
-            return null;
-        }
-        //prevoir si count 0 return null
-        $returnedCard = $this->cards[$key];
-        unset($this->cards[$key]);
-        return $returnedCard;
-    }
-
-    public function mixTheCards()
+    public function mixTheCards(): void
     {
         shuffle($this->cards);
     }

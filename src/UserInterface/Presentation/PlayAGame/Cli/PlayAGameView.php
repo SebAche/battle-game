@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\UserInterface\Presentation\PlayAGame\Cli;
 
+use App\Core\Domain\Model\Card;
+
 class PlayAGameView
 {
     public function generateView(PlayAGamePresenter $presenter): void
@@ -42,9 +44,9 @@ class PlayAGameView
                 $line = sprintf(
                     "Round %d : %d (%s) vs %d (%s) => Winner : %s (%d points)" . PHP_EOL,
                     $battle->numberRound,
-                    $battle->cardPlayerOne->getValue(),
+                    $battle->cardPlayerOne instanceof Card ? $battle->cardPlayerOne->getValue() : 'Error',
                     $viewModel->namePlayerOne,
-                    $battle->cardPlayerTwo->getValue(),
+                    $battle->cardPlayerTwo instanceof Card ? $battle->cardPlayerTwo->getValue() : 'Error',
                     $viewModel->namePlayerTwo,
                     $battle->winner->getName(),
                     $battle->winnerCummulatedPoints,

@@ -10,6 +10,9 @@ use App\Core\Domain\Model\Deck;
 
 class PlayAGameUseCase implements PlayAGameUseCaseInterface
 {
+    /**
+     * @var array<string> $errors
+     */
     private $errors = [];
 
     public function execute(PlayAGameRequest $request, PlayAGamePresenterInterface $output): void
@@ -35,7 +38,7 @@ class PlayAGameUseCase implements PlayAGameUseCaseInterface
             $response->histo = $game->getHisto();
             $response->errors = $this->errors;
 
-            if ($game->getTheWinner() instanceof Player) {
+            if ($game->getTheWinner() instanceof Player && $game->getTheLooser() instanceof Player) {
                 $response->exAequo = false;
                 $response->winnerName = $game->getTheWinner()->getName();
                 $response->winnerScore = $game->getTheWinner()->getTheCummulatedPoints();

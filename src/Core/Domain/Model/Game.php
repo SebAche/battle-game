@@ -8,6 +8,9 @@ use App\Core\Domain\Model\Player;
 
 class Game
 {
+    /**
+     * @var array<Battle> $histo
+     */
     private array $histo = [];
 
     public function __construct(
@@ -19,7 +22,7 @@ class Game
         // $initDeck->mixTheCards();
     }
 
-    public function getIntroGame()
+    public function getIntroGame(): string
     {
         return sprintf(
             "Card battles opposing %s vs %s (%d cards set)",
@@ -36,6 +39,7 @@ class Game
         while (!$this->initDeck->isEmpty()) {
             $i++;
             $card = $this->initDeck->drawTheTopCard();
+
             if ($i%2 === 0) {
                 $this->playerOne->receiveACard($card);
                 continue;
@@ -50,7 +54,7 @@ class Game
         return $this->playerOne;
     }
 
-    public function battle(bool $battleDiplayed)
+    public function battle(bool $battleDiplayed): void
     {
         $maxRound = $this->initDeck->getInitNumberOfCards()/2;
         $round = 1;
@@ -80,6 +84,9 @@ class Game
         return $this->playerOne->getTheCummulatedPoints() < $this->playerTwo->getTheCummulatedPoints() ? $this->playerOne : $this->playerTwo;
     }
 
+    /**
+     * @return array<Battle>
+     */
     public function getHisto(): array
     {
         return $this->histo;

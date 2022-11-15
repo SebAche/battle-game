@@ -9,14 +9,14 @@ use App\Core\Domain\Model\Deck;
 class Player
 {
     public function __construct(
-        private string $name,
+        private string $name = '',
         private Deck $deck = new Deck(),
         private int $cummulatedPoints = 0,
     ) {
         $this->name = $this->formatName($name);
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -26,12 +26,12 @@ class Player
         $this->deck->addACard($card);
     }
 
-    public function playACard(): ?Card
+    public function playACard(): Card
     {
         return $this->deck->drawTheTopCard();
     }
 
-    public function addOnePoint()
+    public function addOnePoint(): void
     {
         $this->cummulatedPoints++;
     }

@@ -52,3 +52,14 @@ In your CLI at the root of the project :
 ```sh
 chmod 755 public/index.php
 ```
+
+### Areas for Improvement:
+- Add more players
+- Use traditional cards (king, jack, diamond, heart,...)
+- Implement the trumps of tarot
+- Implement the trumps of belotte
+
+### Quality:
+- PHPStan : `./vendor/bin/phpstan analyse --level max src`
+- PHP-CS-FIXER : `./vendor/bin/php-cs-fixer fix src`
+- Psalm : `./vendor/bin/psalm`
