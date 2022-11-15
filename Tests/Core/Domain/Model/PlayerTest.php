@@ -22,7 +22,7 @@ class PlayerTest extends TestCase
 
         $this->assertInstanceOf(
             Deck::class,
-            $player->getCards()
+            $player->getDeck()
         );
 
         $this->assertEquals(
