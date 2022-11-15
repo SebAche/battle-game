@@ -7,11 +7,17 @@
             "email": "sebh35@gmail.com"
         }
     ],
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.8",
         "phpstan/phpstan": "^1.7",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-strict-rules": "^1.2",
-        "vimeo/psalm": "^4.23"
+        "vimeo/psalm": "^4.23",
+        "phpunit/phpunit": "^9.5"
     }
 }

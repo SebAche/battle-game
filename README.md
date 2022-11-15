@@ -63,3 +63,4 @@ chmod 755 public/index.php
 - PHPStan : `./vendor/bin/phpstan analyse --level max src`
 - PHP-CS-FIXER : `./vendor/bin/php-cs-fixer fix src`
 - Psalm : `./vendor/bin/psalm`
+- PhpUnit : `./vendor/bin/phpunit Tests`

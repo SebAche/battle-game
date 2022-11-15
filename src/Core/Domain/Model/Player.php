@@ -41,7 +41,7 @@ class Player
         return $this->cummulatedPoints;
     }
 
-    public function getCards(): Deck
+    public function getDeck(): Deck
     {
         return $this->deck;
     }
